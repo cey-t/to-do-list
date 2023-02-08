@@ -61,10 +61,11 @@ body {
   font-weight: 700;
   cursor: pointer;
 }
-#toDoContainer {
+.toDos {
   display: flex;
   width: 85%;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 30px;
 }
 .buttonStyling {
   background: linear-gradient(to bottom, #66ffff 0%, #ff99cc 100%);
@@ -73,4 +74,8 @@ body {
   padding: 10px 20px;
   cursor: pointer;
   width: 15%;
+}
+.toDoItem {
+  display: flex;
+  justify-content: space-between;
 }

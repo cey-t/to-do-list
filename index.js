@@ -1,33 +1,31 @@
 let inputField = document.getElementById("inputField");
 let toDoContainer = document.getElementById("toDoContainer");
 let addButton = document.getElementById("addButton");
-function deleteButton(newToDo, editToDo) {
+function deleteButton(toDo) {
   const deleteToDoButton = document.createElement("button");
   deleteToDoButton.innerText = "Delete";
   deleteToDoButton.classList.add("buttonStyling");
   deleteToDoButton.addEventListener("click", function () {
-    toDoContainer.removeChild(newToDo);
-    toDoContainer.removeChild(deleteToDoButton);
-    toDoContainer.removeChild(editToDo);
+    toDoContainer.removeChild(toDo);
   });
   return deleteToDoButton;
 }
-function createEditButton(newToDo) {
+
+function createEditButton(newToDo, toDo) {
   const editButton = document.createElement("button");
-  editButton.innerText = "Edit";
   editButton.classList.add("buttonStyling");
+  editButton.innerText = "Edit";
   editButton.addEventListener("click", function () {
-    const inputEdit = document.createElement("input");
-    console.log(inputEdit);
-    inputEdit.value = newToDo.innerText;
-    console.log(newToDo);
-    toDoContainer.appendChild(inputEdit);
-    console.log(toDoContainer);
-    inputEdit.classList.add("inputField");
-    toDoContainer.replaceChild(inputEdit, newToDo);
-    inputEdit.addEventListener("blur", function () {
-      newToDo.innerText = inputEdit.value;
-      toDoContainer.replaceChild(newToDo, inputEdit);
+    const inputField = document.createElement("input");
+    inputField.value = newToDo.innerText;
+    inputField.classList.add("inputField");
+    toDo.replaceChild(inputField, newToDo);
+    inputField.focus();
+    inputField.addEventListener("blur", function () {
+      newToDo.innerText = inputField.value;
+      toDo.replaceChild(newToDo, inputField);
+      toDo.removeChild(editButton);
+      toDo.appendChild(createEditButton(newToDo));
     });
   });
   return editButton;
@@ -37,12 +35,15 @@ addButton.addEventListener("click", function () {
   if (inputField.value.trim() !== "") {
     const newToDo = document.createElement("p");
     newToDo.innerText = inputField.value;
-    const editButton = createEditButton(newToDo);
-    const deleteToDoButton = deleteButton(newToDo, editButton);
+    const toDoItem = document.createElement("div");
+    toDoItem.classList.add("toDoItem");
+    const editButton = createEditButton(newToDo, toDoItem);
+    const deleteToDoButton = deleteButton(toDoItem);
+    toDoItem.appendChild(newToDo);
+    toDoItem.appendChild(deleteToDoButton);
+    toDoItem.appendChild(editButton);
     newToDo.classList.add("paragraphStyling");
-    toDoContainer.appendChild(newToDo);
-    toDoContainer.appendChild(deleteToDoButton);
-    toDoContainer.appendChild(editButton);
+    toDoContainer.appendChild(toDoItem);
     inputField.value = " ";
   }
 });
