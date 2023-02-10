@@ -15,17 +15,14 @@ body {
   flex-direction: column;
   gap: 30px;
   padding: 40px;
-  height: 700px;
 }
 #toDoList {
   color: #8a2be2;
-  height: 100px;
   display: flex;
   align-items: center;
 }
 .inputField {
-  width: 100%;
-  height: 60px;
+  width: 80%;
   font-size: 30px;
   font-weight: 700;
   outline: none;
@@ -36,46 +33,115 @@ body {
 }
 .inputContainer {
   display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
   gap: 30px;
 }
 .buttonContainer {
   border: none;
   background: #e1e50a;
-  box-shadow: 6px 6px 0px #850ae5;
+  box-shadow: -4px 1px 0px 0px #850ae5;
   width: 100px;
-  height: 60px;
+  height: 90%;
   cursor: pointer;
   border-radius: 10px;
+  width: 100%;
 }
 .button {
   display: flex;
   align-items: center;
+  width: 15%;
+  height: 60px;
 }
 .paragraphStyling {
-  width: 65%;
-  height: 50px;
+  width: 70%;
+  height: auto;
   display: flex;
   align-items: center;
   padding: 10px 20px;
   font-size: 30px;
   font-weight: 700;
   cursor: pointer;
+  align-self: center;
 }
 .toDos {
   display: flex;
-  width: 85%;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
+}
+.modifyToDoButton {
+  display: flex;
+  justify-content: space-around;
+  width: 30%;
 }
 .buttonStyling {
   background: linear-gradient(to bottom, #66ffff 0%, #ff99cc 100%);
   border: none;
   border-radius: 8px;
-  padding: 10px 20px;
+  padding: 20px;
   cursor: pointer;
-  width: 15%;
+  width: 40%;
 }
 .toDoItem {
   display: flex;
-  justify-content: space-between;
+}
+.editField {
+  width: 70%;
+  align-self: center;
+  height: 45px;
+}
+@media screen and (max-width: 800px) {
+  .paragraphStyling {
+    width: 65%;
+    padding: 10px;
+    font-size: 20px;
+  }
+
+  .buttonStyling {
+    padding: 15px;
+    font-size: 12px;
+  }
+  .toDoItem {
+    justify-content: space-between;
+  }
+}
+@media screen and (max-width: 690px) {
+  .paragraphStyling {
+    font-size: 15px;
+  }
+  .inputField {
+    font-size: 20px;
+    padding: 10px 5px;
+  }
+  .button {
+    height: 45px;
+  }
+  .modifyToDoButton {
+    width: 35%;
+  }
+  #toDoList {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .button {
+    height: 33px;
+  }
+  .toDoItem,
+  .paragraphStyling,
+  .editField {
+    height: 25px;
+  }
+  .inputField {
+    font-size: 10px;
+  }
+  .buttonStyling {
+    padding: 5px;
+    font-size: 10px;
+  }
+  #toDoList {
+    font-size: 20px;
+  }
 }
