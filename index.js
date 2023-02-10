@@ -25,7 +25,7 @@ function createEditButton(newToDo, toDo, buttons) {
       newToDo.innerText = inputField.value;
       toDo.replaceChild(newToDo, inputField);
       buttons.removeChild(editButton);
-      butt.appendChild(createEditButton(newToDo, toDo, buttons));
+      buttons.appendChild(createEditButton(newToDo, toDo, buttons));
     });
   });
   return editButton;
@@ -34,11 +34,12 @@ function createEditButton(newToDo, toDo, buttons) {
 addButton.addEventListener("click", function () {
   if (inputField.value.trim() !== "") {
     const newToDo = document.createElement("p");
+    newToDo.classList.add("paragraphStyling");
     newToDo.innerText = inputField.value;
     const toDoItemContainer = document.createElement("div");
+    toDoItemContainer.classList.add("toDoItem");
     const buttonContainer = document.createElement("div");
     buttonContainer.classList.add("modifyToDoButton");
-    toDoItemContainer.classList.add("toDoItem");
     const editButton = createEditButton(
       newToDo,
       toDoItemContainer,
@@ -49,7 +50,6 @@ addButton.addEventListener("click", function () {
     buttonContainer.appendChild(editButton);
     toDoItemContainer.appendChild(newToDo);
     toDoItemContainer.appendChild(buttonContainer);
-    newToDo.classList.add("paragraphStyling");
     toDoContainer.appendChild(toDoItemContainer);
     inputField.value = " ";
   }
